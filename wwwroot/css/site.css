@@ -12,13 +12,13 @@
     height: 200px;
     object-fit: cover;
 }
-/* Paginación horizontal con “cuadritos” */
+
 #paginacion {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;            /* separación entre cuadritos */
-  flex-wrap: wrap;     /* por si se achica la pantalla */
+  gap: 8px;            
+  flex-wrap: wrap;     
   padding: 0;
   margin: 16px 0 0;
 }

@@ -6,7 +6,7 @@ function paginar() {
   const TODAS = Array.from(document.querySelectorAll(".tarjeta-perro"));
   const itemsPorPagina = 10;
 
-  // Filtrar solo las visibles (por el buscador)
+  
   const tarjetas = TODAS.filter(t => t.style.display !== "none" && t.offsetParent !== null);
 
   const totalPaginas = Math.max(1, Math.ceil(tarjetas.length / itemsPorPagina));
@@ -15,9 +15,7 @@ function paginar() {
 
   function mostrarPagina(p) {
     paginaActual = p;
-    // Ocultamos todas
     TODAS.forEach(t => (t.style.display = "none"));
-    // Mostramos solo el slice de la página actual, pero solo de las filtradas
     const inicio = (p - 1) * itemsPorPagina;
     const fin = p * itemsPorPagina;
     tarjetas.slice(inicio, fin).forEach(t => (t.style.display = "block"));

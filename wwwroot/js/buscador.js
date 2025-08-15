@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
 
-        // Reiniciar la paginación cuando se busca algo
+        
         if (typeof paginar === "function") {
             paginar();
         }

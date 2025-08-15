@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const allCards = Array.from(document.querySelectorAll(".dog-card"));
   const pagContainer = document.getElementById("paginacion");
 
-  const ITEMS_POR_PAGINA = 10; // 4 páginas si tienes 40 perros
+  const ITEMS_POR_PAGINA = 10; 
   let paginaActual = 1;
 
   function coincide(card) {
@@ -21,40 +21,32 @@ document.addEventListener("DOMContentLoaded", function () {
     const peso = parseFloat(card.dataset.peso || "0");
     const genero = card.dataset.genero;
 
-    // Búsqueda (nombre o descripción)
     if (q && !nombre.includes(q) && !desc.includes(q)) return false;
 
-    // Tamaño
     if (tam && tamano !== tam) return false;
 
-    // Peso
     if (pesoFiltro) {
       if (pesoFiltro === "menos10" && !(peso < 10)) return false;
       if (pesoFiltro === "10a25" && !(peso >= 10 && peso <= 25)) return false;
       if (pesoFiltro === "mas25" && !(peso > 25)) return false;
     }
-
-    // Género
     if (gen && genero !== gen) return false;
 
     return true;
   }
 
   function render() {
-    // 1) Filtrar
+  
     const filtradas = allCards.filter(coincide);
-
-    // 2) Calcular páginas
+   
     const totalPaginas = Math.max(1, Math.ceil(filtradas.length / ITEMS_POR_PAGINA));
     if (paginaActual > totalPaginas) paginaActual = totalPaginas;
 
-    // 3) Mostrar solo las tarjetas de la página actual
     allCards.forEach(c => (c.style.display = "none"));
     const inicio = (paginaActual - 1) * ITEMS_POR_PAGINA;
     const fin = inicio + ITEMS_POR_PAGINA;
     filtradas.slice(inicio, fin).forEach(c => (c.style.display = "block"));
 
-    // 4) Dibujar paginación
     dibujarPaginacion(totalPaginas);
   }
 
@@ -75,14 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
   function dibujarPaginacion(total) {
     pagContainer.innerHTML = "";
 
-    // «
+
     pagContainer.appendChild(
       crearLi("«", false, paginaActual === 1, () => {
         if (paginaActual > 1) { paginaActual--; render(); }
       })
     );
 
-    // 1 2 3 4 (simple)
     for (let i = 1; i <= total; i++) {
       pagContainer.appendChild(
         crearLi(String(i), paginaActual === i, false, () => {
