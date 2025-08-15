@@ -1,31 +1,60 @@
-html {
-  font-size: 14px;
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.card:hover {
+    transform: scale(1.05);
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+/* Paginación horizontal con “cuadritos” */
+#paginacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;            /* separación entre cuadritos */
+  flex-wrap: wrap;     /* por si se achica la pantalla */
+  padding: 0;
+  margin: 16px 0 0;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+#paginacion .page-item {
+  list-style: none;
 }
 
-body {
-  margin-bottom: 60px;
+#paginacion .page-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;         /* cuadrado */
+  height: 40px;        /* cuadrado */
+  border: 1px solid #dee2e6;
+  border-radius: 8px;  /* esquinas redondeadas */
+  text-decoration: none;
+  color: #0d6efd;
+  font-weight: 600;
+  user-select: none;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+#paginacion .page-item.active .page-link {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+#paginacion .page-item.disabled .page-link {
+  opacity: .5;
+  pointer-events: none;
 }
+
+#paginacion .page-link.ellipsis {
+  cursor: default;
+  color: #6c757d;
+  border-style: dotted;
+}
+

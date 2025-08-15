@@ -1,0 +1,26 @@
+@model TrabajoN4.Models.Mascota
+@{
+    ViewData["Title"] = "Detalles";
+}
+<div class="container mt-4">
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-5">
+                <img src="@Model.ImagenUrl" class="img-fluid rounded-start" alt="@Model.Nombre" style="object-fit:cover;height:100%;width:100%;">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h2 class="card-title">@Model.Nombre</h2>
+                    <p><strong>Descripción:</strong> @Model.Descripcion</p>
+                    <p><strong>Características:</strong> @Model.Caracteristicas</p>
+                    <p><strong>Cualidades:</strong> @Model.Cualidades</p>
+                    <p><strong>Cuidados:</strong> @Model.Cuidados</p>
+                    <p class="mb-1"><strong>Tamaño:</strong> @Model.Tamaño</p>
+                    <p class="mb-1"><strong>Peso:</strong> @Model.Peso kg</p>
+                    <p class="mb-3"><strong>Género:</strong> @Model.Genero</p>
+                    <a class="btn btn-secondary" href="@Url.Action("Index","Perros")">Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
